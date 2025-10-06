@@ -15,7 +15,7 @@
 
 7> <code>python3 manage.py runserver</code>
 
-<b>Now the Backend API server is ready for use</b>
+<b>Now the Backend API server is ready for use at <i>localhost</i> port 8000</b>
 <br>
 <hr>
 <br>
@@ -25,7 +25,7 @@
 
 1> Open VScode inside <code>frontend_app</code> folder
 
-2> Use the Live Server extension and run it at port 5500
+2> Use the Live Server extension and run the frontend server
 
 <b>Now you can use the web app</b>
 <br>
