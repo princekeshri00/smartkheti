@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SmartKheti</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  
+<link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+  body{
+    font-family: monospace;
+  }
+    #map { height: 100%; margin-bottom: 10px; }
+    .coords, .weather { margin: 10px 0; font-family: sans-serif; }
+    input { width: 140px; margin: 3px; padding: 5px; }
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    
+  </style>
+</head>
+<body><br>
+  <center><h1 style="font-size: 25px; font-weight:bold;">SmartKheti</h1></center><br>
+  
+  <div class="grid">
+    
+  <div id="map"></div>
+
+<center>
+  <div class="coords">
+    
+    <br>
+    <!--
+    Latitude: <input id="lat" type="text"><br>
+    Longitude: <input id="lng" type="text">
+    -->
+    
+      <label class="input">
+  Latitude 
+  <input id="lat" type="text" class="grow" />
+</label><br><br>
+
+  <label class="input">
+    Longitude
+    <input id="lng" type="text" class="grow"/>
+  </label><br><br>
+    
+  </div>
+
+
+<br>
+<form id="dataForm">
+  
+  <label class="input">
+  Nitrogen 
+  <input id="n" type="text" class="grow" placeholder="00"/>
+  <span class="badge badge-neutral badge-xs">Kg/Ha</span>
+</label><br><br>
+
+  <label class="input">
+  Phosphorus 
+  <input id ="p"type="text" class="grow" placeholder="00"/>
+  <span class="badge badge-neutral badge-xs">Kg/Ha</span>
+</label><br><br>
+
+<label class="input">
+  Potassium
+  <input id ="k"type="text" class="grow" placeholder="00"/>
+  <span class="badge badge-neutral badge-xs">Kg/Ha</span>
+</label><br><br>
+
+<label class="input">
+  Ph
+  <input id="ph" type="text" class="grow" placeholder="0-14"/>
+</label><br><br>
+
+<label class="input">
+  Rainfall
+  <input id="r" type="text" class="grow" placeholder="000" />
+  <span class="badge badge-neutral badge-xs">mm</span>
+</label><br><br>
+
+<label class="input">
+  Temperature
+  <input id="t" type="text" class="grow" placeholder="000" />
+  <span class="badge badge-neutral badge-xs">°C</span>
+</label><br><br>
+
+<label class="input">
+  Humidity
+  <input id="h" type="text" class="grow" placeholder="00" />
+  <span class="badge badge-neutral badge-xs">%</span>
+</label><br><br>
+
+  
+  <!--
+  <input id="n" type="text" placeholder="Nitrogen"> Kg/Ha<br>
+    <input id="p" type="text" placeholder="Phosphorus"> Kg/Ha<br>
+      <input id="n" type="text" placeholder="Potassium"> Kg/Ha<br>
+        <input id="ph" type="text"  placeholder="Ph"><br><br>
+        -->
+        <input class="btn btn-success btn-block" id="predictBtn" type="submit" value="Predict">
+        
+</form>
+
+  <!--<div id="resultBox"></div>-->
+
+
+  <!-- Open the modal using ID.showModal() method -->
+  <!--<button class="btn" onclick="my_modal_1.showModal()">open modal</button>-->
+  <dialog id="my_modal_1" class="modal">
+    <div class="modal-box">
+      <h3 class="text-lg font-bold">Results</h3>
+      <p class="py-4" id="resultBox">
+
+        <p id="cropRec0" style="color: green;"></p>
+        <p id="cropRec1" style="color: green;"></p>
+        <p id="cropRec2" style="color: green;"></p>
+        <p id="cropRec3" style="color: green;"></p>
+        <p id="cropRec4" style="color: green;"></p>
+        <p id="cropRec5" style="color: red;"></p>
+        <p id="cropRec6" style="color: red;"></p>
+
+        <!--<progress id="cropRec1" class="progress progress-info w-56" value="0" max="100"></progress>
+        <progress id="cropRec2" class="progress progress-info w-56" value="0" max="100"></progress>
+        <progress id="cropRec3" class="progress progress-info w-56" value="0" max="100"></progress>
+        <progress id="cropRec4" class="progress progress-info w-56" value="0" max="100"></progress>
+        <progress id="cropRec5" class="progress progress-info w-56" value="0" max="100"></progress>
+        <progress id="cropRec6" class="progress progress-info w-56" value="0" max="100"></progress>
+        <progress id="cropRec7" class="progress progress-info w-56" value="0" max="100"></progress>-->
+
+      </p>
+      <div class="modal-action">
+        <form method="dialog">
+          <!-- if there is a button in form, it will close the modal -->
+          <button class="btn">Close</button>
+        </form>
+      </div>
+    </div>
+  </dialog>
+
+
+</center>
+
+</div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
